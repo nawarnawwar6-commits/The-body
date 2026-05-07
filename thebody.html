@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kelompok 2 9E</title>
+
+  <style>
+    /* BUBBLE STYLE */
+.bubble {
+    position: absolute;
+    bottom: -100px;
+    background: rgba(210, 233, 216, 0.25); /* hijau tua soft */
+    border-radius: 50%;
+    animation: rise 8s infinite ease-in;
+    pointer-events: none;
+}
+
+@keyframes rise {
+    0% { transform: translateY(0) scale(0.8); opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-120vh) scale(1.3); opacity: 0; }
+}
+
+/* EFEK DAUN BERNAFAS (ZOOM IN–OUT) */
+.hero {
+    animation: breathe 6s ease-in-out infinite;
+    background-size: 110%;
+}
+
+@keyframes breathe {
+    0% { background-size: 110%; }
+    50% { background-size: 125%; }
+    100% { background-size: 110%; }
+}
+
+
+/* HEADER NAVBAR (TIDAK DIANIMASIKAN) */
+header{
+    background:#3d5a40;
+    padding:15px 40px;
+    color:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+
+/* HERO SECTION */
+.hero{
+    height:300px;
+    background:
+      linear-gradient(rgba(0,0,0,0.30), rgba(0,0,0,0.30)),
+      url('D:/daun.jpeg');
+    background-position:center;
+    background-repeat:no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#60dd98;
+    font-size:40px;
+    font-weight:bold;
+    text-shadow:0 3px 5px #000;
+}
+
+    body{margin:0;font-family:Arial;background:#f2f2e8}
+    header{background:#3d5a40;padding:15px 40px;color:#fff;display:flex;justify-content:space-between;align-items:center}
+    .nav-links a{color:#fff;text-decoration:none;margin-left:20px;font-weight:bold}
+    .hero{
+      height:400px;
+      background:
+        linear-gradient(rgba(0,0,0,0.30), rgba(0,0,0,0.30)),
+        url('D:/daun.jpeg');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:#60dd98;
+      font-size:40px;
+      font-weight:bold;
+      text-shadow:0 3px 5px #000;
+    }
+
+    .product-container{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:40px}
+    .product-card{background:#fff;padding:20px;border-radius:15px;box-shadow:0 4px 10px #0001;text-align:center}
+    .product-card img{width:180px;height:180px;object-fit:contain;border-radius:10px;margin:auto;display:block}
+    button{background:#3d5a40;color:#fff;padding:10px 16px;border:none;border-radius:8px;cursor:pointer;margin-top:10px}
+    .manfaat-btn{background:#6b705c}
+
+    .rating{color:gold;font-size:20px;margin:8px 0;letter-spacing:2px}
+
+    .cart-panel{position:fixed;right:-400px;top:0;width:350px;height:100%;background:#fff;box-shadow:-3px 0 10px #0002;padding:20px;transition:.4s;z-index:999}
+    .close-cart{cursor:pointer;float:right;font-weight:bold}
+
+    .popup{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:25px;border-radius:15px;width:320px;box-shadow:0 4px 20px #0003;z-index:1000}
+    .popup input,.popup textarea,.popup select{width:100%;padding:8px;margin:6px 0 12px;border-radius:6px;border:1px solid #ccc}
+
+    .popup-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:900}
+ 
+    .logo-group {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* jarak logo dan teks */
+}
+
+  </style>
+</head>
+
+<body>
+
+<header>
+<div class="logo-group">
+  <img src="D://thebody.png" alt="logo"
+       style="width:88px; height:88px; object-fit:cover; border-radius:50%;">
+  <h2 style="margin-left:10px; padding:0;">Kelompok 2 9E</h2>
+</div>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#produk">Produk</a>
+    <a href="#" onclick="openPopup('popupKonsul')">Konsultasi</a>
+    <a href="#" onclick="openCart()" style="font-size: 30px;">🛒</a>
+  </div>
+</header>
+
+<div class="hero"><h1>The Body Shop</h1></div>
+
+<!-- WELCOME BOX DENGAN PAPAN HIJAU -->
+<div style="
+  background:#3d5a40;
+  color:white;
+  padding:35px 25px;
+  border-radius:20px;
+  width:80%;
+  margin:40px auto 20px auto;
+  text-align:center;
+">
+
+  <h2 style="margin-bottom:15px; font-size:32px; font-weight:bold;">
+    Welcome to The Body Shop
+  </h2>
+
+  <p style="font-size:16px; line-height:1.5; max-width:800px; margin:auto;">
+    Discover a selection of body, face, and hair care products 
+    inspired by the goodness of nature. We bring you high-quality,
+    cruelty-free formulas designed to enhance your natural beauty.
+  </p>
+
+  <p style="font-size:16px; line-height:1.5; max-width:800px; margin:15px auto;">
+    Explore your favorite collections — from skincare and body care 
+    to fragrances — with a safe, easy, and convenient online shopping 
+    experience.
+  </p>
+
+  <p style="font-weight:bold; font-size:17px; margin-top:15px;">
+    Enjoy your journey and find the products that suit you best!
+  </p>
+
+</div>
+
+<h2 style="text-align:center;font-size:35px;margin-top:40px;margin-bottom:20px;font-weight:bold;">
+  Produk Terbaru
+</h2>
+
+<!-- PRODUK -->
+<div class="product-container" id="produk">
+
+  <div class="product-card">
+    <img src="D:/paket.jpeg">
+    <h3>Vitamin C Gift Set</h3>
+    <p>Rp 299.000</p>
+    <div class="rating">★★★★★</div>
+    <button onclick="addToCart('Vitamin C Gift Set',299000)">Tambah ke Keranjang</button>
+    <button class="manfaat-btn" onclick="bukaManfaat(1)">Lihat Manfaat</button>
+  </div>
+
+  <div class="product-card">
+    <img src="D:/body.jpeg">
+    <h3>Shea Body Butter 200ml</h3>
+    <p>Rp 399.000</p>
+    <div class="rating">★★★★★</div>
+    <button onclick="addToCart('Shea Body Butter 200ml',399000)">Tambah ke Keranjang</button>
+    <button class="manfaat-btn" onclick="bukaManfaat(2)">Lihat Manfaat</button>
+  </div>
+
+  <div class="product-card">
+    <img src="D:/crem.jpeg">
+    <h3>Coconut Shower Cream</h3>
+    <p>Rp 159.000</p>
+    <div class="rating">★★★★☆</div>
+    <button onclick="addToCart('Coconut Shower Cream',159000)">Tambah ke Keranjang</button>
+    <button class="manfaat-btn" onclick="bukaManfaat(3)">Lihat Manfaat</button>
+  </div>
+
+  <div class="product-card">
+    <img src="D:/scrub.jpeg">
+    <h3>Strawberry Shower Scrub</h3>
+    <p>Rp 299.000</p>
+    <div class="rating">★★★★★</div>
+    <button onclick="addToCart('Strawberry Shower Scrub',299000)">Tambah ke Keranjang</button>
+    <button class="manfaat-btn" onclick="bukaManfaat(4)">Lihat Manfaat</button>
+  </div>
+
+  <div class="product-card">
+    <img src="D:/day crem.jpeg">
+    <h3>Aloe Soothing Day Cream</h3>
+    <p>Rp 379.000</p>
+    <div class="rating">★★★★☆</div>
+    <button onclick="addToCart('Aloe Soothing Day Cream',379000)">Tambah ke Keranjang</button>
+    <button class="manfaat-btn" onclick="bukaManfaat(5)">Lihat Manfaat</button>
+  </div>
+
+  <div class="product-card">
+    <img src="D:/parfume.jpeg">
+    <h3>Body Mist Vanilla</h3>
+    <p>Rp 169.000</p>
+    <div class="rating">★★★★★</div>
+    <button onclick="addToCart('Body Mist Vanilla',169000)">Tambah ke Keranjang</button>
+    <button class="manfaat-btn" onclick="bukaManfaat(6)">Lihat Manfaat</button>
+  </div>
+
+  <div class="product-card">
+    <img src="D:/vitamin E.jpeg">
+    <h3>Bi-Phase Moisture Serum</h3>
+    <p>Rp 509.520</p>
+    <div class="rating">★★★★★</div>
+    <button onclick="addToCart('Bi-Phase Moisture Serum',509520)">Tambah ke Keranjang</button>
+    <button class="manfaat-btn" onclick="bukaManfaat(7)">Lihat Manfaat</button>
+  </div>
+
+  <div class="product-card">
+    <img src="D:/mint.jpeg">
+    <h3>Peppermint</h3>
+    <p>Rp 245.520</p>
+    <div class="rating">★★★★☆</div>
+    <button onclick="addToCart('Peppermint',245520)">Tambah ke Keranjang</button>
+    <button class="manfaat-btn" onclick="bukaManfaat(8)">Lihat Manfaat</button>
+  </div>
+
+  <div class="product-card">
+    <img src="D:/shampo.jpeg">
+    <h3>Shampo BAR Shea</h3>
+    <p>Rp 199.000</p>
+    <div class="rating">★★★★☆</div>
+    <button onclick="addToCart('Shampo BAR Shea',2199000)">Tambah ke Keranjang</button>
+    <button class="manfaat-btn" onclick="bukaManfaat(9)">Lihat Manfaat</button>
+  </div>
+
+  <div class="product-card">
+    <img src="D:/shampo.jpeg">
+    <h3>Swipeit Moisturising Lip Balm</h3>
+    <p>Rp 199.000</p>
+    <div class="rating">★★★★☆</div>
+    <button onclick="addToCart('Swipeit Moisturising Lip Balm',2199000)">Tambah ke Keranjang</button>
+    <button class="manfaat-btn" onclick="bukaManfaat(10)">Lihat Manfaat</button>
+  </div>
+  
+  <div class="product-card">
+    <img src="D:/plum.jpeg">
+    <h3>Hand Balm Shea & Plum</h3>
+    <p>Rp 159.000</p>
+    <div class="rating">★★★★☆</div>
+    <button onclick="addToCart('Hand Balm Shea & Plum',159000)">Tambah ke Keranjang</button>
+    <button class="manfaat-btn" onclick="bukaManfaat(11)">Lihat Manfaat</button>
+  </div>
+
+  <div class="product-card">
+    <img src="D:/caramel.jpeg">
+    <h3>Hand Balm Caramel Cuddle</h3>
+    <p>Rp 159.000</p>
+    <div class="rating">★★★★★</div>
+    <button onclick="addToCart('Hand Balm Caramel Cuddle',159000)">Tambah ke Keranjang</button>
+    <button class="manfaat-btn" onclick="bukaManfaat(12)">Lihat Manfaat</button>
+  </div>
+
+  <div class="product-card">
+    <img src="D:/pakets.jpeg">
+    <h3>Paket Strawberry</h3>
+    <p>Rp 456.000</p>
+    <div class="rating">★★★★★</div>
+    <button onclick="addToCart('Paket Strawberry',456000)">Tambah ke Keranjang</button>
+    <button class="manfaat-btn" onclick="bukaManfaat(13)">Lihat Manfaat</button>
+  </div>
+
+  <div class="product-card">
+    <img src="D:/reso.jpeg">
+    <h3>British Rose</h3>
+    <p>Rp 469.000</p>
+    <div class="rating">★★★★★</div>
+    <button onclick="addToCart('British Rose',469000)">Tambah ke Keranjang</button>
+    <button class="manfaat-btn" onclick="bukaManfaat(14)">Lihat Manfaat</button>
+  </div>
+
+  <div class="product-card">
+    <img src="D:/turn it.jpeg">
+    <h3>Maskara Trun It Up</h3>
+    <p>Rp 231.200</p>
+    <div class="rating">★★★★☆</div>
+    <button onclick="addToCart('Maskara Trun It Up',231.200)">Tambah ke Keranjang</button>
+    <button class="manfaat-btn" onclick="bukaManfaat(15)">Lihat Manfaat</button>
+  </div>
+
+
+</div>
+
+<!-- CART PANEL -->
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-header">Keranjang <span class="close-cart" onclick="closeCart()">X</span></div>
+  <div id="cart-items"></div>
+  <h3>Total: <span id="cart-total">Rp 0</span></h3>
+  <button class="checkout-btn" onclick="openCheckout()">Checkout</button>
+</div>
+
+<div class="popup-overlay" id="popupOverlay"></div>
+
+<!-- POPUP MANFAAT -->
+<div class="popup" id="popupManfaat">
+  <h3 id="manfaat-title"></h3>
+  <p id="manfaat-text"></p>
+  <button onclick="closePopup('popupManfaat')">Tutup</button>
+</div>
+
+<!-- POPUP CHECKOUT -->
+<div class="popup" id="popupCheckout">
+  <h3>Checkout Pembayaran</h3>
+
+  <label>Nama Lengkap</label>
+  <input id="cNama">
+
+  <label>No WhatsApp</label>
+  <input id="cWa">
+
+  <label>Alamat Lengkap</label>
+  <textarea id="cAlamat"></textarea>
+
+  <label>Metode Pembayaran</label>
+  <select id="cPay">
+    <option>Transfer Bank</option>
+    <option>E-Wallet</option>
+    <option>COD</option>
+  </select>
+
+  <h4>Ringkasan Pesanan</h4>
+  <div id="checkout-items"></div>
+
+  <h3>Total: <span id="checkout-total">Rp 0</span></h3>
+
+  <button onclick="prosesCheckout()">Proses Pesanan</button>
+  <button onclick="closePopup('popupCheckout')">Batal</button>
+</div>
+
+<!-- POPUP KONSULTASI -->
+<div class="popup" id="popupKonsul">
+  <h3>Konsultasi Skincare</h3>
+  <textarea rows="4" placeholder="Your complaint..."></textarea>
+  <button onclick="closePopup('popupKonsul')">Kirim</button>
+</div>
+
+<footer style="
+  width:100%;
+  background:#3d5a40;
+  color:white;
+  text-align:center;
+  padding:10px 10px 10px; 
+  font-family:Arial;
+  position:relative;
+  overflow:hidden;
+  margin-top:20px;
+">
+  <!-- garis lengkung tipis -->
+  <div style="
+    position:absolute;
+    bottom:-1px; 
+    left:0;
+    width:70%;
+    height:1px;
+    background:#3d5a40;
+    border-radius:50% 50% 0 0;
+  "></div>
+
+  <h2 style="margin-bottom:8px; font-size:30px; letter-spacing:1px; font-weight:bold;">
+    Thank You for Visiting The Body Shop
+  </h2>
+
+  <p style="max-width:780px; margin:auto; line-height:1.4; font-size:16px; opacity:0.95;">
+    Thank you for visiting The Body Shop Indonesia. We are committed to offering
+    high-quality, environmentally friendly, and cruelty-free products. Stay connected
+    with us for updates on new launches, special promotions, and meaningful campaigns.
+    <br><br>
+    <strong>The Body Shop  Beauty with Purpose.</strong>
+  </p>
+
+  <p style="margin-top:12px; font-size:13px; opacity:0.85;">
+    ©️ Classmeet The Body Shop • Created by: Athaya,Dindaa,Nawwar,Nayla,Queensha
+  </p>
+</footer>
+
+<script>
+const manfaatList = {
+ 1:{title:"Manfaat Vitamin C",text:"• 1 set of vitamin C comes with Microdermabrasion cream that gently exfoliates the skin and produces a naturally brighter complexion. Serum for the under-eye area is enriched with Vitamin C for a brighter and hydrated under-eye area for up to 12 hours. Serum enriched with 10% Vitamin C and Bakuchiol to even out skin tone and improve facial texture. Moisturizer with Vitamin C and hyaluronic acid that moisturizes and makes the skin more supple and naturally glowing. Exfoliating toner with Vitamin C, AHA, and papaya enzymes to minimize pores and improve skin texture."},
+ 2:{title:"Manfaat Shea Body Butter",text:"•A creamy body moisturizer with a soft and refreshing shea scent."},
+ 3:{title:"Manfaat Coconut Shower Cream",text:"• A creamy body wash that moisturizes the skin with Community Trade cold-pressed virgin coconut oil. Its scent is so refreshing."},
+ 4:{title:"Manfaat Strawberry Scrub",text:"• A refreshing strawberry-scented..."},
+ 5:{title:"Manfaat Aloe Day Cream",text:"• An extraordinary offering, this facial moisturizer has a silky-smooth cream texture, enriched with exclusive aloe vera sourced from Community Fair Trade in Mexico."},
+ 6:{title:"Manfaat Body Mist Vanilla",text:"• Sweet refreshing vanilla scent."},
+ 7:{title:"Bi-Phase Moisture Serum",text:"•A lightweight, easily absorbed serum with a two-step action that hydrates the skin for up to 30 hours."},
+ 8:{title:"Peppermint",text:"•AIt's okay, we forget to love our feet sometimes. That's why you need this moisturizing hero! With Peppermint and CFT Shea Butter, it moisturizes and nourishes cracked and dry skin on your feet for up to 48 hours."},
+ 9:{title:"Shampo BAR Shea",text:"•A lShampoo bar for dry to very dry hair that nourishes and moisturizes each strand."},
+ 10:{title:"Swipeit Moisturising Lip Balm",text:"•Moisturizes lips with Community Fair Trade shea butter and olive oil. Also gives lips a healthy color."},
+ 11:{title:"Hand Balm Shea & Plum",text:"•Hand Balm with shea and plum scent, containing CFT Shea Butter, Sesame Seed Oil, and Cocoa Butter to moisturize your hands and nails for up to 96 hours."},
+ 12:{title:"Hand Balm Caramel Cuddle",text:"•Hand Balm with a sweet and creamy scent containing CFT Shea Butter, Sesame Seed Oil, and Cocoa Butter that moisturizes for up to 96 hours.."},
+ 13:{title:"Paket Strawberry",text:"•The gift set contains 3 Strawberry products: Hand Cream, Body Butter & Shower Gel with the fruity juicy aroma of strawberries!."},
+ 14:{title:"British  Rose",text:"•Experience an exclusive sensation with a gel-textured face mask that reflects European elegance, with real rose petals, pure rose essence, precious rosehip oil, and organic aloe vera from Community Fair Trade. Your skin will feel soft, fresh, and radiant after use."},
+ 15:{title:"Maskara Trun It Up",text:"•Mascara to curl and add volume to your lashes. With a vegan formula made from 85% natural ingredients, it lasts all day and is easy to remove."},
+
+};
+
+function bukaManfaat(id){
+  document.getElementById("manfaat-title").innerText = manfaatList[id].title;
+  document.getElementById("manfaat-text").innerText = manfaatList[id].text;
+  openPopup("popupManfaat");
+}
+
+let cart=[];
+
+function openCart(){document.getElementById("cartPanel").style.right="0"}
+function closeCart(){document.getElementById("cartPanel").style.right="-400px"}
+
+function addToCart(name,price){
+  cart.push({name,price});
+  updateCart();
+  alert("Produk ditambahkan!");
+}
+
+function updateCart(){
+  let html="",total=0;
+  cart.forEach(i=>{
+    html+=`<div style="display:flex;justify-content:space-between"><span>${i.name}</span><span>Rp ${i.price.toLocaleString()}</span></div>`;
+    total+=i.price;
+  });
+  document.getElementById("cart-items").innerHTML=html;
+  document.getElementById("cart-total").innerHTML="Rp "+total.toLocaleString();
+}
+
+function openCheckout(){
+  tampilkanCheckout();
+  openPopup("popupCheckout");
+}
+
+function tampilkanCheckout(){
+  let html="",total=0;
+  cart.forEach(i=>{
+    html+=`<div style="display:flex;justify-content:space-between"><span>${i.name}</span><span>Rp ${i.price.toLocaleString()}</span></div>`;
+    total+=i.price;
+  });
+  document.getElementById("checkout-items").innerHTML=html;
+  document.getElementById("checkout-total").innerHTML="Rp "+total.toLocaleString();
+}
+
+function prosesCheckout(){
+  if(!cNama.value || !cWa.value || !cAlamat.value){
+    alert("Lengkapi semua data!");
+    return;
+  }
+  alert("Pesanan diproses! Kami akan menghubungi melalui WhatsApp.");
+  cart=[];
+  updateCart();
+  closePopup("popupCheckout");
+}
+
+function openPopup(id){
+  popupOverlay.style.display="block";
+  document.getElementById(id).style.display="block";     
+}
+function closePopup(id){
+  popupOverlay.style.display="none";
+  document.getElementById(id).style.display="none";
+}
+</script>
+<script>
+function createBubble() {
+    const bubble = document.createElement("span");
+    const size = Math.random() * 80 + 20;
+
+    bubble.classList.add("bubble");
+    bubble.style.width = size + "px";
+    bubble.style.height = size + "px";
+    bubble.style.left = Math.random() * window.innerWidth + "px";
+
+    document.body.appendChild(bubble);
+
+    setTimeout(() => bubble.remove(), 8000);
+}
+
+setInterval(createBubble, 500);
+</script>
+</body>
+</html>
